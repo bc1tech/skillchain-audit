@@ -1,0 +1,74 @@
+{
+  "name": "skillchain-audit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "files": [
+    "contracts",
+    "test"
+  ],
+  "scripts": {
+    "dev": "lite-server",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint:sol": "solium -d contracts",
+    "lint:sol:fix": "solium -d contracts --fix",
+    "lint": "npm run lint:js && npm run lint:sol",
+    "lint:fix": "npm run lint:js:fix && npm run lint:sol:fix",
+    "console": "truffle develop",
+    "compile": "truffle compile --all",
+    "test": "scripts/test.sh",
+    "coverage": "scripts/coverage.sh",
+    "clean": "rm -rf coverage",
+    "profile": "npm run clean && npm run coverage && open coverage/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bc1tech/skillchain-audit.git"
+  },
+  "homepage": "http://skillchain.io",
+  "bugs": {
+    "url": "https://github.com/bc1tech/skillchain-audit/issues"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "token"
+  ],
+  "author": "BC1 - Blockchain Pioneers (https://www.bc1.tech)",
+  "contributors": [
+    {
+      "name": "Vittorio Minacori",
+      "url": "https://github.com/vittominacori"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "zeppelin-solidity": "1.6.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^3.0.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "ethereumjs-util": "^6.0.0",
+    "ganache-cli": "^6.2.5",
+    "solidity-coverage": "0.4.3",
+    "solium": "1.1.7",
+    "truffle": "4.0.6",
+    "truffle-contract": "^3.0.7",
+    "web3": "0.20.6",
+    "yargs": "^11.0.0"
+  }
+}
