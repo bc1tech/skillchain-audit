@@ -156,6 +156,17 @@ contract('SkillChainToken', function (accounts) {
       assert.equal(mintingFinished, false);
     });
 
+    it('should fail to transfer if minting is not finished', async function () {
+      await token.mint(accounts[0], 100);
+      await assertRevert(token.transfer(accounts[1], 100), { from: accounts[0] });
+    });
+
+    it('should fail to transferFrom if minting is not finished', async function () {
+      await token.mint(accounts[0], 100);
+      await token.approve(accounts[1], 100, { from: accounts[0] });
+      await assertRevert(token.transferFrom(accounts[0], accounts[2], 100, { from: accounts[1] }));
+    });
+
     it('should mint a given amount of tokens to a given address', async function () {
       const result = await token.mint(accounts[0], 100);
       assert.equal(result.logs[0].event, 'Mint');

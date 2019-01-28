@@ -112,6 +112,11 @@ contract('SkillChainPrivateSale', function ([_, investor, wallet, purchaser, nex
       await this.crowdsale.buyTokens(investor, { value: value, from: purchaser }).should.be.rejectedWith(EVMRevert);
     });
 
+    it('should reject payments if beneficiary is the zero address', async function () {
+      await increaseTimeTo(this.startTime);
+      await this.crowdsale.buyTokens(0x0, { value: value, from: purchaser }).should.be.rejectedWith(EVMRevert);
+    });
+
     it('should accept payments within cap', async function () {
       await increaseTimeTo(this.startTime);
       await this.crowdsale.send(cap.minus(lessThanCap)).should.be.fulfilled;
@@ -291,6 +296,11 @@ contract('SkillChainPrivateSale', function ([_, investor, wallet, purchaser, nex
       await this.crowdsale.closeTokenSale(nextCrowdsaleAddress).should.be.rejectedWith(EVMRevert);
       await increaseTimeTo(this.startTime);
       await this.crowdsale.closeTokenSale(nextCrowdsaleAddress).should.be.rejectedWith(EVMRevert);
+    });
+
+    it('cannot be closed and transferred to the zero address', async function () {
+      await increaseTimeTo(this.afterEndTime);
+      await this.crowdsale.closeTokenSale(0x0).should.be.rejectedWith(EVMRevert);
     });
 
     it('can be closed before end if cap reached', async function () {

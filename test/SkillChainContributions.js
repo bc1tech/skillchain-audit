@@ -28,6 +28,10 @@ contract('SkillChainContributions', function ([_, owner, thirdParty, anotherThir
     assert.equal(balance, 400);
   });
 
+  it('should fail to add zero as token amount', async function () {
+    await this.contributions.addBalance(thirdParty, 0, { from: owner }).should.be.rejectedWith(EVMRevert);
+  });
+
   it('third party should fail to add token amount to the address balance', async function () {
     let balance = await this.contributions.tokenBalances(thirdParty);
     assert.equal(balance, 0);
