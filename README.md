@@ -35,7 +35,7 @@ npm install
 
 ### Linter
 
-Use solium@1.1.7
+Use solhint
 
 ```bash
 npm run lint:sol

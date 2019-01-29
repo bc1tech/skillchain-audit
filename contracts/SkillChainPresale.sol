@@ -83,7 +83,8 @@ contract SkillChainPresale is CappedCrowdsale, Ownable {
         return rate.mul(cap);
     }
 
-    // returns the number of the tokens available for the ico. At the moment that the ico starts it must be equal to totalTokens(),
+    // returns the number of the tokens available for the ico.
+    // At the moment that the ico starts it must be equal to totalTokens(),
     // then it will decrease. It is used to calculate the percentage of sold tokens as remainingTokens() / totalTokens()
     function remainingTokens() public view returns(uint) {
         return rate.mul(cap).sub(rate.mul(weiRaised));
