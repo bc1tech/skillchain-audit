@@ -8,6 +8,9 @@
     "test"
   ],
   "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "vuepress build docs && sh docs/deploy/deploy.sh",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix",
     "lint:sol": "solium -d contracts",
@@ -68,7 +71,9 @@
     "surya": "^0.2.7",
     "truffle": "4.0.6",
     "truffle-contract": "^3.0.7",
+    "vuepress": "^0.14.8",
     "web3": "0.20.6",
+    "webpack": "^4.29.0",
     "yargs": "^11.0.0"
   }
 }
