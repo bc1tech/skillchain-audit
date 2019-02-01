@@ -8,7 +8,6 @@
     "test"
   ],
   "scripts": {
-    "dev": "lite-server",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint . --fix",
     "lint:sol": "solium -d contracts",
